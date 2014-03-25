@@ -4,52 +4,16 @@
 		<title>fist angular app : Data binding</title>
 	</head>
 	<body>
-		<div class="container" data-ng-init="customers=[{name:'Sahan Munasinghe', city:'Kaburupitiya'}, {name:'Nuwan Sachinthana', city:'Walgama'}, {name:'Diunuge Buddhika Wijesinghe', city:'Matara'}]">
-			Name: <input type="text" data-ng-model="name"/> {{name}}
-			<h3>Looping with the ng-repeat Directive</h3>
-			<ul>
-				<li data-ng-repeat="cust in customers | filter:name | orderBy:'city'">{{cust.name | uppercase}} . {{cust.city | lowercase}}</li>
-			</ul>
-		</div>
-		<hr>
-		<br>
-		<div class="container" data-ng-controller="SimpleController">
-			
-			<h3>Using controller data</h3>
-			Name: <input type="text" data-ng-model="personTxt"/> {{personTxt}}
-			
-			<ul>
-				<li data-ng-repeat="person in customers | filter:personTxt | orderBy:'city'">{{person.name}} . {{person.city}}</li>
-			</ul>
-		</div>
-		<script src="scripts/angular-1.2.9/angular.min.js"> //Should be at the starting of the script</script>
-		<script src="scripts/angular-1.2.9/angular-route.min.js"> //Should be at the starting of the script</script>
+		
+		<!-- Place holder for the view -->
+		<div data-ng-view=""></div> <!-- <ng-view></ng-view>  --> 
+		
+		<script src="scripts/angular-1.2.9/angular.js"> //Should be at the starting of the script</script>
+		<script src="scripts/angular-1.2.9/angular-route.js"> //Should be at the starting of the script</script>
 		<script>
 		
-			var demoApp = angular.module('demoApp', []);
+			var demoApp = angular.module('demoApp', ['ngRoute']);	
 			
-			//var routers = {};
-			
-			demoApp.config ( function ( $routeProvider )
-				{
-					$routeProvider
-						.when('/',
-							{
-								controller : 'SimpleController',
-								templateUrl : 'index.htm'
-							})
-						.when('/blog',
-							{
-								controller : 'SimpleController',
-								templateUrl : 'index.htm'
-							})
-						.otherwise(
-							{
-								redirectTo : '/'
-							});
-				});
-				
-			//demoApp.config(routers);
 			
 			/* Fifth method */
 			
@@ -62,11 +26,38 @@
 						{name:'Diunuge Buddhika Wijesinghe', city:'Matara'}
 					];
 					
-					$scope.personTxt = "My Name";
+					$scope.addCustomer = function()
+					{
+						$scope.customers.push(
+								{name: $scope.newCustomer.name, city: $scope.newCustomer.city});
+					}
 				};
 			
 			demoApp.controller(controllers);
+
 			
+			//var routers = {};
+			
+			demoApp.config ( function ($routeProvider)
+				{
+					$routeProvider
+						.when('/',
+							{
+								controller : 'SimpleController',
+								templateUrl : 'views/view1.htm'
+							})
+						.when('/view2',
+							{
+								controller : 'SimpleController',
+								templateUrl : 'views/view2.htm'
+							})
+						.otherwise(
+							{
+								redirectTo : '/'
+							});
+				});
+				
+			//demoApp.config(routers);
 		</script>
 	</body>
 </html>
