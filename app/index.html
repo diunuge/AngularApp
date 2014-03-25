@@ -22,14 +22,14 @@
 				<li data-ng-repeat="person in customers | filter:personTxt | orderBy:'city'">{{person.name}} . {{person.city}}</li>
 			</ul>
 		</div>
-		<script src="scripts/angular.min.js"> //Should be at the starting of the script</script>
+		<script src="scripts/angular-1.2.9/angular.min.js"> //Should be at the starting of the script</script>
+		<script src="scripts/angular-1.2.9/angular-route.min.js"> //Should be at the starting of the script</script>
 		<script>
 		
 			var demoApp = angular.module('demoApp', []);
 			
-			
 			//var routers = {};
-			/*
+			
 			demoApp.config ( function ( $routeProvider )
 				{
 					$routeProvider
@@ -48,9 +48,8 @@
 								redirectTo : '/'
 							});
 				});
-				*/
+				
 			//demoApp.config(routers);
-			
 			
 			/* Fifth method */
 			
@@ -68,70 +67,6 @@
 			
 			demoApp.controller(controllers);
 			
-			
-			
-			/* Fourth method */
-			/*
-			var controllers = {};
-			controllers.first = function ($scope)
-				{
-					$scope.customers = [
-						{name:'Sahan Chamika Munasinghe', city:'Kaburupitiya'},
-						{name:'Nuwan Sachinthana', city:'Walgama'},
-						{name:'Diunuge Buddhika Wijesinghe', city:'Matara'}
-					];
-					
-					$scope.personTxt = "My Name";
-				};
-			
-			demoApp.controller('SimpleController', controllers.first );
-			*/
-			/* Third method */
-			/*
-			function SimpleController ($scope)
-				{
-					$scope.customers = [
-						{name:'Sahan Chamika Munasinghe', city:'Kaburupitiya'},
-						{name:'Nuwan Sachinthana', city:'Walgama'},
-						{name:'Diunuge Buddhika Wijesinghe', city:'Matara'}
-					];
-					
-					$scope.personTxt = "My Name";
-				};
-			
-			demoApp.controller('SimpleController', SimpleController );
-			*/
-			
-			/* Second method */
-			/*
-			demoApp.controller('SimpleController', 
-				function ($scope)
-				{
-					$scope.customers = [
-						{name:'Sahan Chamika Munasinghe', city:'Kaburupitiya'},
-						{name:'Nuwan Sachinthana', city:'Walgama'},
-						{name:'Diunuge Buddhika Wijesinghe', city:'Matara'}
-					];
-					
-					$scope.personTxt = "My Name";
-				});
-				
-			demoApp.controller('SimpleController', SimpleController);
-			*/
-				
-			/* First method */
-			/*
-			function SimpleController($scope)
-			{
-				$scope.customers = [
-					{name:'Sahan Chamika Munasinghe', city:'Kaburupitiya'},
-					{name:'Nuwan Sachinthana', city:'Walgama'},
-					{name:'Diunuge Buddhika Wijesinghe', city:'Matara'}
-				];
-				
-				$scope.personTxt = "My Name";
-			}
-			*/
 		</script>
 	</body>
 </html>
