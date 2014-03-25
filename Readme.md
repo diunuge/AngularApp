@@ -1,0 +1,1 @@
+This project is developed for test AngularJS capabilities and best practices
